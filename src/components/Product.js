@@ -3,16 +3,17 @@ import "./Product.css";
 import { useStateValue } from "../StateProvider";
 
 function Product({ id, title, image, price, rating }) {
-  const [{}, dispatch] = useStateValue();
+  const [, dispatch] = useStateValue();
+
   const addToBasket = () => {
     dispatch({
       type: "ADD_TO_BASKET",
       item: {
-        id,
-        title,
-        image,
-        price,
-        rating,
+        id: id,
+        title: title,
+        image:image,
+        price:price,
+        rating: rating
       },
     });
   };
@@ -28,6 +29,7 @@ function Product({ id, title, image, price, rating }) {
           {Array(rating)
             .fill()
             .map(_ => (
+              // eslint-disable-next-line jsx-a11y/accessible-emoji
               <p>⭐</p>
             ))}
         </div>
